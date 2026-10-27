@@ -6,6 +6,9 @@ A get-started workspace for developing ESP-Mosaico applications with an AI codin
 agent. The repository supplies the CLI entry, workspace settings, pinned
 submodules, documentation and Agent guidance. Applications are created on demand.
 
+This personal fork pins the private Weather Window application and the reviewed
+BSP/Engine fixes. See [repository ownership and upstream updates](docs/repository-workflow.md).
+
 ## Create an application
 
 This workspace requires **Python 3.10+** and **Git 2.28+**. Firmware builds use ESP-IDF `master`

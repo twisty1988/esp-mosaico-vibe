@@ -5,6 +5,9 @@
 使用 AI 编程 Agent 开发 ESP-Mosaico 应用的入门工作区。仓库提供 CLI 入口、
 工作区配置、固定版本子模块、文档和 Agent 指引。
 
+此个人 fork 固定私有 Weather Window 应用及已验证的 BSP/Engine 修复版本。
+仓库归属和后续官方更新见[仓库管理](docs/repository-workflow.md)。
+
 ## 创建应用
 
 本工作区要求 **Python 3.10+** 和 **Git 2.28+**。固件构建固定使用 ESP-IDF `master` 的

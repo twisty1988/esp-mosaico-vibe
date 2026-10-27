@@ -9,6 +9,8 @@
 - [Gateway 与设备归属](project-gateway_CN.md)
 - [游戏创建与仿真](game-development_CN.md)
 - [工作区、依赖与 0.2 迁移](workspace-migration_CN.md)
+- [Weather Window：迁入项目与继续开发](weather-window.md)
+- [个人 fork、应用仓库与官方上游更新](repository-workflow.md)
 
 公共实现、API 和协议资料由所属仓库维护：
 

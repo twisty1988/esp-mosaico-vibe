@@ -9,6 +9,8 @@
 - [Gateways and device ownership](project-gateway.md)
 - [Game creation and simulation](game-development.md)
 - [Workspace, dependency and 0.2 migration](workspace-migration.md)
+- [Weather Window: imported project and development entry points](weather-window.md)
+- [Personal forks, application repositories and upstream updates](repository-workflow.md)
 
 Public implementations, APIs and protocol documentation are maintained by their
 owning repositories:

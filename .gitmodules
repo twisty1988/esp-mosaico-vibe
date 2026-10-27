@@ -1,9 +1,15 @@
 [submodule "bsp"]
 	path = submodule/esp-mosaico-bsp
-	url = https://github.com/esp-mosaico/esp-mosaico-bsp
+	url = https://github.com/twisty1988/esp-mosaico-bsp.git
+	branch = codex/weather-window-fixes
 [submodule "submodule/esp-mosaico-utils"]
 	path = submodule/esp-mosaico-utils
 	url = https://github.com/esp-mosaico/esp-mosaico-utils.git
 [submodule "submodule/raylib-lite-engine"]
 	path = submodule/raylib-lite-engine
-	url = https://github.com/espressif2022/raylib-lite-engine.git
+	url = https://github.com/twisty1988/raylib-lite-engine.git
+	branch = codex/weather-window-fixes
+[submodule "projects/weather_window"]
+	path = projects/weather_window
+	url = https://github.com/twisty1988/weather_window.git
+	branch = main
