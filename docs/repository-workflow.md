@@ -7,6 +7,9 @@
 | --- | --- | --- | --- |
 | 工作区 | `twisty1988/esp-mosaico-vibe` | `esp-mosaico/esp-mosaico-vibe` | `main` |
 | `projects/weather_window` | `twisty1988/weather_window`（私有） | 原创应用，无官方上游 | `main` |
+| `projects/esp_mosaico_claw` | `twisty1988/esp_mosaico_claw`（私有） | `esp-mosaico/esp-mosaico-claw` | `main` |
+| `projects/esp_mosaico_claw/third-party/esp-claw` | `twisty1988/esp-claw`（私有） | `espressif/esp-claw` | `main` |
+| Claw 组件锁中的 BSP | `twisty1988/esp-mosaico-bsp` | `esp-mosaico/esp-mosaico-bsp` | `codex/claw-camera-save` |
 | `submodule/esp-mosaico-bsp` | `twisty1988/esp-mosaico-bsp` | `esp-mosaico/esp-mosaico-bsp` | `codex/weather-window-fixes` |
 | `submodule/raylib-lite-engine` | `twisty1988/raylib-lite-engine` | `espressif2022/raylib-lite-engine` | `codex/weather-window-fixes` |
 | `submodule/esp-mosaico-utils` | `esp-mosaico/esp-mosaico-utils` | 直接使用官方仓库 | 工作区固定提交 |
@@ -16,15 +19,20 @@
 `hello_mosaico` 验证工程和本机 `DEVELOPMENT_CN.md` 保留在本地。
 `build/`、`managed_components/`、运行日志、Gateway 状态及凭据均不提交。
 
+Claw 的 BSP 组件由应用 manifest 和 `dependencies.lock` 固定，基于该应用原有
+官方版本增加相机帧复用接口；它不改变工作区天气窗所用 BSP 子模块的提交。
+
 ## 从其他机器检出
 
 ```sh
 git clone https://github.com/twisty1988/esp-mosaico-vibe.git
 cd esp-mosaico-vibe
 git submodule update --init submodule/esp-mosaico-utils submodule/esp-mosaico-bsp submodule/raylib-lite-engine projects/weather_window
+git submodule update --init projects/esp_mosaico_claw
+git -C projects/esp_mosaico_claw submodule update --init third-party/esp-claw third-party/esp-mosaico-utils
 ```
 
-读取 Weather Window 需要有该私有仓库权限的 GitHub 身份。公共工作区 CI
+读取 Weather Window、Claw 及其 ESP-Claw fork 需要有对应私有仓库权限的 GitHub 身份。公共工作区 CI
 仅初始化自身测试所需的公开依赖，不读取私有应用。
 Git 的附加 remote 是本机配置，首次克隆后恢复官方入口：
 
@@ -32,6 +40,8 @@ Git 的附加 remote 是本机配置，首次克隆后恢复官方入口：
 git remote add upstream https://github.com/esp-mosaico/esp-mosaico-vibe.git
 git -C submodule/esp-mosaico-bsp remote add upstream https://github.com/esp-mosaico/esp-mosaico-bsp.git
 git -C submodule/raylib-lite-engine remote add upstream https://github.com/espressif2022/raylib-lite-engine.git
+git -C projects/esp_mosaico_claw remote add upstream https://github.com/esp-mosaico/esp-mosaico-claw.git
+git -C projects/esp_mosaico_claw/third-party/esp-claw remote add upstream https://github.com/espressif/esp-claw.git
 ```
 
 普通子模块检出使用 detached HEAD，这是按提交复现的正常状态。开始修改前
