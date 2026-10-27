@@ -18,15 +18,19 @@ preserve existing public API compatibility and dependency-owned code conventions
 
 6. **Prefer composition and limit abstractions.** Compose functionality through members, contexts, and small interfaces. Avoid inheritance hierarchies and generic frameworks that serve no practical purpose.
 
-7. **Actively use Git for code management.** Before starting, check the current branch, `git status`, and existing diffs. Use a separate branch for each independent task, such as `feat/xxx` or `fix/xxx`. For parallel tasks, use separate worktrees under `Projects` to avoid modifying the same working directory concurrently.
+7. **Follow the workspace Git workflow.** Apply the [repository ownership and delivery rules](../AGENTS.md#git-and-upstream-workflow). Check the application's branch, status and diffs together with the workspace and any changed dependencies. Use `codex/` task branches; maintained applications have independent repositories registered as workspace submodules. Keep concurrent tasks in separate managed worktrees.
 
-8. **Keep commits focused and reviewable.** Each commit should serve one clear purpose. Commit functional changes, refactoring, and formatting-only changes separately.
+8. **Keep commits focused and reviewable.** Each commit should serve one clear purpose. Commit functional changes, refactoring, and formatting-only changes separately. Write commit messages in Chinese, and push application/dependency commits before the workspace records and pushes their new references.
 
 Project creation initializes an independent Git repository on `main` and supplies
 `tools/quality/` configuration. It does not stage files, create commits, configure
 remotes or install hooks. Follow the generated quality guide to enable checks;
 the shared checker belongs to utils and is referenced by relative path. Preserve
 template-owned settings and keep application-specific policy in the application.
+These are creator-tool behaviors. Before delivering a new maintained application,
+complete its remote setup, validated commits/pushes and submodule registration under
+the workspace Git workflow. Existing local-only experiments remain local until included
+in the user's task.
 
 
 ## Debugging Guidelines

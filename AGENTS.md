@@ -22,6 +22,54 @@ for the chip’s download program. See [device modes](docs/device-modes.md).
 - Agent guidance/tools belong in `.agents/`, shared skills in version-controlled
   `.agents/skills/`, local analysis in `.agents/analysis/`; this is not a secrecy boundary.
 
+## Git and upstream workflow
+
+Follow the [repository workflow](docs/repository-workflow.md) for all application,
+dependency and workspace changes. These are standing instructions for this workspace:
+
+- Keep the workspace and maintained applications in separate repositories. Register
+  maintained applications under `projects/` as submodules; keep their source, assets,
+  licenses, tests, design material and application-specific records in their own
+  repositories. The workspace records shared configuration, guidance and exact
+  submodule commits. Do not leave a delivered application as an unregistered nested repo.
+- Use `twisty1988`'s personal repositories as `origin` for the workspace, applications
+  and modified dependencies. Keep the official repository as `upstream` for each fork;
+  original applications need no official upstream. New application repositories are
+  private unless the user specifies otherwise. Unmodified dependencies may continue
+  using their official origin; Utils currently follows this policy.
+- Before editing, inspect the branch, status and diffs in the workspace and every
+  repository being changed. Preserve unrelated user work and local-only experiments.
+  Use `codex/` task branches; `main` is the workspace/application integration branch.
+  Dependency maintenance branches follow the recorded repository workflow. Create a
+  branch before editing a detached submodule; never force-push shared history.
+- Keep dependency fixes as focused commits in their owning fork. Patch files may
+  document an import but must not be the only copy of a maintained fix. Ensure each
+  `.gitmodules` URL can supply the commit recorded by the workspace. Keep build outputs,
+  downloaded components, logs, Gateway state and credentials out of commits; preserve
+  required versioned source/generated data and application dependency locks.
+- After completing and validating user-authorized changes, commit and push them to
+  the configured personal origin by default. Honor explicit local-only, no-commit,
+  no-push, draft or different delivery instructions. Stage only the current task's
+  changes and write focused commit messages in Chinese.
+- Push changed application/dependency commits first. Then commit their new workspace
+  references and related workspace changes, and push the workspace with
+  `git push --recurse-submodules=check origin <delivery-branch>`. Follow the requested
+  branch/PR destination; otherwise integrate validated work into the relevant
+  integration/maintenance branch without rewriting existing commits.
+- Verify remote branch heads and that recorded submodule commits are reachable from
+  their configured URLs. For initial repository setup or URL changes, verify a fresh
+  checkout. Report delivered repositories/branches/commits and any remaining changes;
+  uncommitted task changes in a submodule or an unpushed child commit are not a completed
+  delivery. Report unrelated pre-existing changes separately without altering them.
+- Receive official updates by fetching `upstream`, selecting a reviewed SDK/API-compatible
+  commit and merging it into an upgrade branch containing local fixes. Resolve conflicts
+  in the owning repository, check for equivalent upstream fixes, and validate affected
+  applications before adopting new pins. Prefer merge for shared maintenance history.
+  Ordinary `submodule update --init` restores recorded commits; use `--remote` only for
+  an intentional upgrade. Keep the prescribed ESP-IDF revision unless explicitly changed.
+- This Git delivery policy does not authorize deployment, device writes, releases,
+  making private application contents public, or pushing to official `upstream` repositories.
+
 ## Espressif MCP services
 
 When available, use `esp-component-registry` for components and `esp-pilot` for
