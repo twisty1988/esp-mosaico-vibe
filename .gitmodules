@@ -17,3 +17,6 @@
 	path = projects/esp_mosaico_claw
 	url = https://github.com/twisty1988/esp_mosaico_claw.git
 	branch = main
+[submodule "projects/wbd_mcu_simulator"]
+	path = projects/wbd_mcu_simulator
+	url = https://github.com/twisty1988/wbd_mcu_simulator.git

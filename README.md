@@ -6,8 +6,8 @@ A get-started workspace for developing ESP-Mosaico applications with an AI codin
 agent. The repository supplies the CLI entry, workspace settings, pinned
 submodules, documentation and Agent guidance. Applications are created on demand.
 
-This personal fork pins the private Weather Window application and the reviewed
-BSP/Engine fixes. See [repository ownership and upstream updates](docs/repository-workflow.md).
+This personal fork pins private maintained applications and reviewed BSP/Engine fixes.
+The [MCU simulator](docs/wbd-mcu-simulator.md) provides a native touchscreen protocol test tool. See [repository ownership and upstream updates](docs/repository-workflow.md).
 
 ## Create an application
 
