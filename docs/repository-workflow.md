@@ -15,6 +15,7 @@
 | `submodule/esp-mosaico-bsp` | `twisty1988/esp-mosaico-bsp` | `esp-mosaico/esp-mosaico-bsp` | `codex/weather-window-fixes` |
 | `submodule/raylib-lite-engine` | `twisty1988/raylib-lite-engine` | `espressif2022/raylib-lite-engine` | `codex/weather-window-fixes` |
 | `submodule/esp-mosaico-utils` | `esp-mosaico/esp-mosaico-utils` | 直接使用官方仓库 | 工作区固定提交 |
+| 外部固定 ESP-IDF SDK | `twisty1988/esp-idf` | `espressif/esp-idf` | `codex/mosaico-7b9cc1a-fixes` |
 
 应用自己的素材、测试、设计资料和历史设备记录位于应用私有仓库内。
 工作区保存公共说明、配置、子模块 URL 和提交号。未纳入共享管理的
@@ -23,6 +24,32 @@
 
 Claw 的 BSP 组件由应用 manifest 和 `dependencies.lock` 固定，基于该应用原有
 官方版本增加相机帧复用接口；它不改变工作区天气窗所用 BSP 子模块的提交。
+
+### 固定 ESP-IDF 与补丁来源
+
+ESP-IDF 的构建基线继续固定为 `7b9cc1ac79f865983f59bb8ff3ff43eb74ff1dbe`。
+本机 SDK 位于 `/Users/twisty/esp/esp-idf-7b9cc1a`，HEAD 保持该基线，
+其 4 个文件的工作树差异已逐字记录到个人 SDK fork 的维护分支：
+
+| 提交 | 范围与来源 |
+| --- | --- |
+| `864f32439dc049ee029dd886e56f63f8b51d653a` | BTDM 外部接口补齐 `btdm_user_cfg.h`，1 个文件 |
+| `cefb3108ee0a611ad30d83071d689faab14ae916` | DVP 帧尾隔离、FIFO 重置与完整帧检查，3 个文件；与 BSP 的 `esp-idf-dvp-frame-capture-stability.patch` 一致 |
+
+完整源码位于 [个人 SDK 维护分支](https://github.com/twisty1988/esp-idf/tree/codex/mosaico-7b9cc1a-fixes)。
+本机 `origin` 指向个人 fork，`upstream` 保留官方仓库。维护提交用于保存和审查
+固定基线上的补丁；构建 SDK 继续检出固定基线并应用已核验的差异。
+因此本机显示上述 4 个修改文件是已应用补丁的预期状态，源码已有对应的远端提交。
+
+新 SDK 副本应先核对基线，再从维护提交导出所需差异，并以 `git apply --check`
+核对后应用；已有补丁使用 `git apply --reverse --check` 确认。
+BSP 配置会幂等应用 DVP 补丁，按两个提交分别核查可避免混合状态下重复应用。
+维护分支若继续增加修复，须先审查并验证后再采用新的补丁提交。
+
+本次归档复用了 DVP 补丁的既有相机真机验收，并使用 Claw 的实际编译参数检查
+BTDM、DVP 实现及其头文件，三个 C 翻译单元检查通过；未新增蓝牙功能验收。
+从 GitHub 新检出维护分支后，4 个文件与本机内容逐字节一致。
+SDK 原始 HEAD 与 4 个文件内容保持不变；没有新增固件部署。
 
 ## 从其他机器检出
 
