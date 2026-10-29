@@ -20,3 +20,7 @@
 [submodule "projects/wbd_mcu_simulator"]
 	path = projects/wbd_mcu_simulator
 	url = https://github.com/twisty1988/wbd_mcu_simulator.git
+[submodule "projects/codex_companion"]
+	path = projects/codex_companion
+	url = https://github.com/twisty1988/mosaico_codex_companion.git
+	branch = main

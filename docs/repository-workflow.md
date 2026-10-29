@@ -8,6 +8,7 @@
 | 工作区 | `twisty1988/esp-mosaico-vibe` | `esp-mosaico/esp-mosaico-vibe` | `main` |
 | `projects/wbd_mcu_simulator` | `twisty1988/wbd_mcu_simulator`（私有） | 原创应用，无官方上游 | `main` |
 | `projects/weather_window` | `twisty1988/weather_window`（私有） | 原创应用，无官方上游 | `main` |
+| `projects/codex_companion` | `twisty1988/mosaico_codex_companion`（私有） | 原创应用，无官方上游 | `main` |
 | `projects/esp_mosaico_claw` | `twisty1988/esp_mosaico_claw`（私有） | `esp-mosaico/esp-mosaico-claw` | `main` |
 | `projects/esp_mosaico_claw/third-party/esp-claw` | `twisty1988/esp-claw`（私有） | `espressif/esp-claw` | `main` |
 | Claw 组件锁中的 BSP | `twisty1988/esp-mosaico-bsp` | `esp-mosaico/esp-mosaico-bsp` | `codex/claw-camera-save` |

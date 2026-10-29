@@ -3,6 +3,7 @@
 [简体中文](README_CN.md)
 
 - [MCU simulator: private application and preview](wbd-mcu-simulator.md)
+- [Codex Companion: Mac read-only bridge](codex-companion.md)
 - [Device modes: Vibe Mode and ROM Download Mode](device-modes.md)
 - [Project creation and selection](project-init.md)
 - [Espressif MCP services for coding agents](mcp-servers.md)
