@@ -23,4 +23,6 @@ projects/codex_companion/bridge serve
 [验收记录](../projects/codex_companion/docs/acceptance.md)。配对、构建与安装见
 [设备说明](../projects/codex_companion/docs/device.md)。设备使用单独配对的 TLS 端点，
 诊断页保持回环访问，Mac 桥接需持续运行。
+应用保存两套 Wi-Fi 并自动选择可用网络；Bonjour 跟随 Mac 局域网地址变化，
+公司与家庭之间切换不需要重新配对。
 快照、原始日志与配对凭据保留本机；应用设计与验收记录归其私有仓库维护。

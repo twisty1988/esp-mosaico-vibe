@@ -27,5 +27,7 @@ See the application's [README](../projects/codex_companion/README.md),
 Pairing, builds and installation are documented in the application's
 [device guide](../projects/codex_companion/docs/device.md). Devices use a separately
 paired TLS endpoint; the diagnostic page stays on loopback. The Mac bridge must
-remain running. Snapshots, raw logs and pairing credentials remain local.
+remain running. The application saves two Wi-Fi networks and selects an available
+one automatically. Bonjour follows the Mac's LAN address, so changing between
+home and work does not require pairing again. Snapshots, raw logs and pairing credentials remain local.
 Application-specific design and validation records belong to its private repository.
