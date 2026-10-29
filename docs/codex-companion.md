@@ -1,11 +1,11 @@
-# Codex Companion: Mac read-only bridge
+# Codex Companion: Mac bridge and Mosaico display
 
 [简体中文](codex-companion_CN.md) | [Documentation index](README.md)
 
 `projects/codex_companion` is the private application repository for a Codex
-status companion. The current phase contains the Mac bridge only. Device UI,
-firmware creation and hardware installation are deferred until the data path
-has passed its acceptance checks.
+status companion. It includes the read-only Mac bridge and a native GSP application
+for Mosaico's fixed 480×480 screen, with overview, task detail, quota and the user's
+Peace animations. The native simulator and device share the C UI and scene.
 
 ```sh
 git submodule update --init projects/codex_companion
@@ -24,4 +24,8 @@ version, coverage limits, stale/unknown behavior and its strict read-only bounda
 See the application's [README](../projects/codex_companion/README.md),
 [protocol](../projects/codex_companion/docs/protocol.md) and
 [acceptance record](../projects/codex_companion/docs/acceptance.md).
-Snapshots, logs and acceptance evidence remain local and are not committed.
+Pairing, builds and installation are documented in the application's
+[device guide](../projects/codex_companion/docs/device.md). Devices use a separately
+paired TLS endpoint; the diagnostic page stays on loopback. The Mac bridge must
+remain running. Snapshots, raw logs and pairing credentials remain local.
+Application-specific design and validation records belong to its private repository.

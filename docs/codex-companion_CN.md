@@ -1,9 +1,10 @@
-# Codex Companion：Mac 只读桥接
+# Codex Companion：Mac 桥接与 Mosaico 显示
 
 [English](codex-companion.md) | [文档索引](README_CN.md)
 
-`projects/codex_companion` 是 Codex 状态伴侣的私有应用仓库。当前阶段只做
-Mac 桥接；设备 UI、固件工程创建和真机安装在数据通路验收后继续。
+`projects/codex_companion` 是 Codex 状态伴侣的私有应用仓库，包含 Mac 只读桥接
+和 Mosaico 固定 480×480 方屏的原生 GSP 应用：总览、任务详情、额度与用户的
+Peace 动画。原生模拟器和设备共用 C 控制器与场景。
 
 ```sh
 git submodule update --init projects/codex_companion
@@ -19,5 +20,7 @@ projects/codex_companion/bridge serve
 
 具体用法、接口和进度见应用的 [README](../projects/codex_companion/README.md)、
 [协议](../projects/codex_companion/docs/protocol.md) 和
-[验收记录](../projects/codex_companion/docs/acceptance.md)。快照、日志和原始验收证据
-保留在本机，不进入提交。
+[验收记录](../projects/codex_companion/docs/acceptance.md)。配对、构建与安装见
+[设备说明](../projects/codex_companion/docs/device.md)。设备使用单独配对的 TLS 端点，
+诊断页保持回环访问，Mac 桥接需持续运行。
+快照、原始日志与配对凭据保留本机；应用设计与验收记录归其私有仓库维护。
