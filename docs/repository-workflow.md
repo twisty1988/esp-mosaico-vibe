@@ -9,6 +9,7 @@
 | `projects/wbd_mcu_simulator` | `twisty1988/wbd_mcu_simulator`（私有） | 原创应用，无官方上游 | `main` |
 | `projects/weather_window` | `twisty1988/weather_window`（私有） | 原创应用，无官方上游 | `main` |
 | `projects/codex_companion` | `twisty1988/mosaico_codex_companion`（私有） | 原创应用，无官方上游 | `main` |
+| `projects/hexagram` | `twisty1988/mosaico_hexagram`（私有） | 原创应用，无官方上游 | `main` |
 | `projects/esp_mosaico_claw` | `twisty1988/esp_mosaico_claw`（私有） | `esp-mosaico/esp-mosaico-claw` | `main` |
 | `projects/esp_mosaico_claw/third-party/esp-claw` | `twisty1988/esp-claw`（私有） | `espressif/esp-claw` | `main` |
 | Claw 组件锁中的 BSP | `twisty1988/esp-mosaico-bsp` | `esp-mosaico/esp-mosaico-bsp` | `codex/claw-camera-save` |
@@ -63,10 +64,11 @@ git clone https://github.com/twisty1988/esp-mosaico-vibe.git
 cd esp-mosaico-vibe
 git submodule update --init submodule/esp-mosaico-utils submodule/esp-mosaico-bsp submodule/raylib-lite-engine projects/weather_window
 git submodule update --init projects/esp_mosaico_claw projects/wbd_mcu_simulator
+git submodule update --init projects/hexagram
 git -C projects/esp_mosaico_claw submodule update --init third-party/esp-claw third-party/esp-mosaico-utils
 ```
 
-读取 MCU Simulator、Weather Window、Claw 及其 ESP-Claw fork 需要有对应私有仓库权限的 GitHub 身份。公共工作区 CI
+读取 MCU Simulator、Weather Window、Codex Companion、Hexagram、Claw 及其 ESP-Claw fork 需要有对应私有仓库权限的 GitHub 身份。公共工作区 CI
 仅初始化自身测试所需的公开依赖，不读取私有应用。
 Git 的附加 remote 是本机配置，首次克隆后恢复官方入口：
 

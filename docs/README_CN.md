@@ -4,6 +4,7 @@
 
 - [下位机模拟器：私有应用与预览入口](wbd-mcu-simulator.md)
 - [Codex Companion：Mac 桥接与 Mosaico 显示](codex-companion_CN.md)
+- [Hexagram：黑金电子卦牌（私有应用）](https://github.com/twisty1988/mosaico_hexagram/blob/main/README.md)
 - [设备模式：Vibe Mode 与 ROM 下载模式](device-modes_CN.md)
 - [工程创建与选择](project-init_CN.md)
 - [编程 Agent 的 Espressif MCP 服务](mcp-servers_CN.md)

@@ -4,6 +4,7 @@
 
 - [MCU simulator: private application and preview](wbd-mcu-simulator.md)
 - [Codex Companion: Mac bridge and Mosaico display](codex-companion.md)
+- [Hexagram: black-and-gold electronic I Ching cards (private application)](https://github.com/twisty1988/mosaico_hexagram/blob/main/README.md)
 - [Device modes: Vibe Mode and ROM Download Mode](device-modes.md)
 - [Project creation and selection](project-init.md)
 - [Espressif MCP services for coding agents](mcp-servers.md)

@@ -24,3 +24,7 @@
 	path = projects/codex_companion
 	url = https://github.com/twisty1988/mosaico_codex_companion.git
 	branch = main
+[submodule "projects/hexagram"]
+	path = projects/hexagram
+	url = https://github.com/twisty1988/mosaico_hexagram.git
+	branch = main
