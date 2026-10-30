@@ -123,6 +123,11 @@ Unless the developer approves another architecture, every application must:
 - Preserve the retained firmware's immutable partition prefix and keep the OTA writer
   only in Vibe Mode. Before application integration changes, read and follow the
   [public integration contract](submodule/esp-mosaico-utils/mosaico-tools/docs/application-integration.md).
+- Keep the application `nvs` partition at offset `0x200000` with a size of
+  **64 KiB (`0x10000`)**, matching the retained base firmware and other workspace
+  applications. Verify this in the built partition table before installation;
+  never shrink the visible NVS range when switching applications. Initialization
+  failures must not automatically erase NVS credentials or settings.
 - Before installation or update, follow [update selection](docs/mosaico-cli.md#select-an-update-method);
   never reshape the partition layout to bypass compatibility checks.
 - Vibe Mode always assigns High-Speed USB to ESP-Iris; normal applications follow

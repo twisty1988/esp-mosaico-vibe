@@ -23,7 +23,12 @@
 `build/`、`managed_components/`、运行日志、Gateway 状态及凭据均不提交。
 
 Claw 的 BSP 组件由应用 manifest 和 `dependencies.lock` 固定，基于该应用原有
-官方版本增加相机帧复用接口；它不改变工作区天气窗所用 BSP 子模块的提交。
+官方版本增加相机帧复用接口，使用独立的 `codex/claw-camera-save` 维护分支。
+工作区 BSP 子模块由 `codex_companion` 和 `wbd_mcu_simulator` 的本地组件引用使用。
+`weather_window` 使用 Raylib Lite Engine 自带的 Board Manager adapter，不编入
+该 BSP；天气窗的构建或运行结果不能作为工作区 BSP 升级的验证证据。
+接收 BSP 更新时分别核对应用锁定版本、编译数据库中的实际组件路径和有效配置，
+不要仅根据工作区子模块 HEAD 推断应用采用了相同版本。
 
 ### 固定 ESP-IDF 与补丁来源
 
