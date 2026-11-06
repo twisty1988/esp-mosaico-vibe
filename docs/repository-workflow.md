@@ -23,13 +23,22 @@
 `hello_mosaico` 验证工程和本机 `DEVELOPMENT_CN.md` 保留在本地。
 `build/`、`managed_components/`、运行日志、Gateway 状态及凭据均不提交。
 
-Claw 的 BSP 组件由应用 manifest 和 `dependencies.lock` 固定，基于该应用原有
-官方版本增加相机帧复用接口，使用独立的 `codex/claw-camera-save` 维护分支。
+Claw 的 BSP 组件由应用 manifest 和 `dependencies.lock` 固定。2026-11-06 起，
+`codex/claw-camera-save` 与工作区的 `codex/weather-window-fixes` 维护分支采用同一
+已验证提交，均保留相机帧复用和音频/IMU 依赖隔离修复。
 工作区 BSP 子模块由 `codex_companion` 和 `wbd_mcu_simulator` 的本地组件引用使用。
 `weather_window` 使用 Raylib Lite Engine 自带的 Board Manager adapter，不编入
 该 BSP；天气窗的构建或运行结果不能作为工作区 BSP 升级的验证证据。
 接收 BSP 更新时分别核对应用锁定版本、编译数据库中的实际组件路径和有效配置，
 不要仅根据工作区子模块 HEAD 推断应用采用了相同版本。
+
+BSP 的 NAND 驱动和 Dhara 包含仓库内修复，不能用同版本号的注册表组件替代。
+本地路径消费方在应用 manifest 显式指定这两个组件的 `override_path`；Git 消费方
+统一应用 manifest、Board Manager 设备声明和锁文件中的仓库、路径与提交。
+升级后核对编译数据库和实际组件源码，避免同名注册表/Git 依赖混用。
+
+工作区采用上游的相对子模块 URL 方式访问个人 BSP 与 Engine fork；Utils 保留
+官方绝对 URL，避免相对解析到不存在的个人仓库。原始应用 URL 保持私有仓库入口。
 
 ### 固定 ESP-IDF 与补丁来源
 

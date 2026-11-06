@@ -23,7 +23,7 @@ class ToolSubmoduleIntegrationTests(unittest.TestCase):
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory(prefix="mosaico workspace ")
         self.addCleanup(self.temporary.cleanup)
-        self.root = Path(self.temporary.name) / "initial workspace"
+        self.root = Path(self.temporary.name).resolve() / "initial workspace"
         self.root.mkdir()
         shutil.copyfile(REPOSITORY / "mosaico.py", self.root / "mosaico.py")
         shutil.copyfile(REPOSITORY / ".mosaico.json", self.root / ".mosaico.json")
@@ -96,8 +96,8 @@ class ToolSubmoduleIntegrationTests(unittest.TestCase):
         self.assertEqual(json.loads((self.root / ".mosaico.json").read_text()), self.config)
         self.assertFalse((project / "build").exists())
         self.assertFalse(self.workspace().run_dir.exists())
-        self.assertEqual(resolve_project(self.workspace(), None, project / "main"), project)
-        self.assertEqual(resolve_project(self.workspace(), None, self.root), project)
+        self.assertEqual(resolve_project(self.workspace(), None, project / "main").resolve(), project.resolve())
+        self.assertEqual(resolve_project(self.workspace(), None, self.root).resolve(), project.resolve())
 
     def test_second_creation_is_rejected_without_overwriting(self):
         project = Path(self.create()["project"])
@@ -111,11 +111,11 @@ class ToolSubmoduleIntegrationTests(unittest.TestCase):
         second = Path(self.create("two")["project"])
         with self.assertRaisesRegex(SelectionError, "Multiple"):
             resolve_project(self.workspace(), None, self.root)
-        self.assertEqual(resolve_project(self.workspace(), "projects/one", self.root), first)
+        self.assertEqual(resolve_project(self.workspace(), "projects/one", self.root).resolve(), first.resolve())
         self.config["workspace"]["default_project"] = "projects/two"
         (self.root / ".mosaico.json").write_text(json.dumps(self.config))
-        self.assertEqual(resolve_project(self.workspace(), None, self.root), second)
-        self.assertEqual(resolve_project(self.workspace(), None, first / "main"), first)
+        self.assertEqual(resolve_project(self.workspace(), None, self.root).resolve(), second.resolve())
+        self.assertEqual(resolve_project(self.workspace(), None, first / "main").resolve(), first.resolve())
 
     def test_internal_recovery_is_never_an_application(self):
         rec = self.workspace().recovery_project
@@ -129,7 +129,7 @@ class ToolSubmoduleIntegrationTests(unittest.TestCase):
     def test_workspace_move_preserves_generated_relative_references(self):
         self.create()
         old = str(self.root)
-        moved = Path(self.temporary.name) / "relocated workspace"
+        moved = Path(self.temporary.name).resolve() / "relocated workspace"
         self.root.rename(moved)
         self.root = moved
         self.tools = moved / "submodule/esp-mosaico-utils/mosaico-tools"
