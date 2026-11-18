@@ -28,3 +28,7 @@
 	path = projects/hexagram
 	url = https://github.com/twisty1988/mosaico_hexagram.git
 	branch = main
+[submodule "projects/do_not_flip"]
+	path = projects/do_not_flip
+	url = https://github.com/twisty1988/mosaico_do_not_flip.git
+	branch = main
